@@ -1,31 +1,23 @@
-from collections import Counter
-
 with open("sample_txt") as sample_txt:
-        contents = sample_txt.readline().lower().replace(".", " ").replace(","," ").replace("!"," ").replace(";"," ")\
-        .replace("'", " ").replace("" " ", " ").replace("-", " ").replace("?", " ").replace(" ?" , " ").split(" ")
+    contents = sample_txt.readlines()
+    contents = str(contents)
 
-        unique_characters = set(contents)
 
+contents = contents.lower().replace(".", " ").replace(",", " ").replace("!", " ").replace(";", " ")\
+    .replace("'", " ").replace('"', ' ').replace("*", " ").replace("" " ", " ").replace("-", " ")\
+    .replace("?", " ").replace(" ?", " ").replace("\\n", " ").replace("\\", " ")
+
+contents = contents.split()
 
 histogram = {}
 
-for word in unique_words:
 
+for word in set(contents):
+    histogram[word] = contents.count(word)
 
-unique_words =
+def value_sort(val):
+    return val[1]
 
-
-word = {}
-word_dict= Counter(word)
-
-print(word_dict)
-
-
-
-
-    #print(character, contents.count(character))
-
-
-
-
-
+list_values_sorted = sorted(histogram.items(), key=value_sort, reverse=True)
+list_values_sorted_20 = list_values_sorted[:20]
+print(list_values_sorted_20)
